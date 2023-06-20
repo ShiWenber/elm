@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.orderPad {
+    @apply flex flex-col text-gray-500;
+}
+
+.orderPad .orderCard {
+    @apply flex flex-row;
+}
+
+.orderPad .orderCard .items {
+    @apply text-left basis-3/4;
+}
+
+.orderPad .orderCard .price {
+    @apply text-right basis-1/4;
+}
+
+.payBtn {
+    @apply h-10 w-1/3 text-center justify-center  items-center bg-green-500
+    text-white border border-solid rounded-md self-center;
+}

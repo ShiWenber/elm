@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.headPad {
+    @apply text-white bg-sky-300 sticky top-0 z-50 items-center p-2;
+}
+
+.mainPad {
+    height: 88vh;
+    overflow: scroll;
+    @apply relative;
+}
+
+.bodyPad {
+    @apply overflow-y-scroll w-full h-full px-4;
+}
+
+
+/* 设置非透明背景 */
+.barPad {
+    @apply flex flex-row h-20 justify-center content-center items-center
+    border border-solid border-gray-300 shadow-lg
+    bottom-0 sticky;
+
+}
+/* flex-row 让内部的 flex 项目水平排列 */
+
+.barPad div {
+    @apply basis-1/4 text-center justify-center;
+
+}
+/* 图标字体大小 */
+.barPad i {
+    @apply text-2xl;
+}
+
+
+
+.businessCard {
+    @apply space-x-2 mx-2  rounded-xl shadow-lg flex flex-row text-sm;
+}
+
+.businessCard .businessInfo {
+    @apply grid grid-rows-3 gap-x-12 items-center my-2 ;
+}
+
+
+
+.businessCard .businessInfo .fa-star {
+    @apply text-yellow-500;
+}
+
+.businessIcon {
+    @apply h-24 w-24 m-2;
+}
+
+
+
+
+/* mx 左右边距 my 上下边距 m 全部边距 */
+/* p-2 内边距为2 */
+/* position 标签 sticky 表示固定在一个部分  */
+/* 该input文件可以做增量修改，已经编译成功的不会被删除，只会被覆盖 */
+/* 一种层次名解决命名冲突 */
+

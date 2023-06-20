@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.buCard {
+    @apply py-2;
+}
+
+.buCard .buInfo {
+    @apply py-2 text-base flex flex-row justify-between shadow-md;
+}
+
+.buCard .line{
+    @apply flex flex-row justify-between;  
+}
+.buCard .items{
+    @apply self-center;
+}
+
+.buCard .price {
+    @apply self-center;
+}

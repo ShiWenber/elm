@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.infoCard {
+    @apply flex flex-row h-20 bg-blue-500;
+}
+
+.buCard {
+    @apply flex flex-row space-x-2 shadow-lg;
+}
+
+
+.barPad_pay{
+    @apply flex flex-row h-20 justify-center content-center items-center
+    shadow-lg bottom-0 sticky;
+}
+
+.orderPad {
+}
+
+
+.orderPad .orderCard {
+    @apply flex flex-row space-x-2 py-2 shadow-sm;
+}
+
+.orderPad .orderCard img{
+    @apply   w-20 h-16 place-items-center;
+} 
+/* .orderPad .orderCard .image {
+    @apply justify-center items-center w-20;
+} */
+
+.orderPad .orderCard .items {
+    @apply align-middle self-center w-4/6 text-gray-500;
+}
+
+.orderPad .orderCard .price {
+    @apply text-right w-1/6 align-middle self-center;
+}
+
+

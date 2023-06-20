@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.BusInfos{
+    @apply flex flex-col place-items-center;
+}
+.BusInfos div{
+    @apply text-center;
+}
+.BusInfos img{
+    @apply w-32 h-24 mt-2.5 mb-3;
+}
+.MealList{
+    @apply mt-3;
+}
+.MealCard {
+    @apply space-x-2 m-1 shadow-lg  flex flex-row w-full h-24;
+}
+
+.MealCard img{
+    @apply   space-y-3 w-20 h-20 place-items-center mt-2;
+
+}
+.MealCard .MealInfo {
+    @apply flex flex-col  space-y-2 mt-2 ;
+}
+
+.barPad_pay{
+    @apply flex flex-row h-20 justify-center content-center items-center
+    shadow-lg bottom-0 sticky;
+}
+
