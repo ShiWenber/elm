@@ -26,12 +26,14 @@ import config from './config'
 // 这边由于后端没有区分测试和正式，姑且都写成一个接口。
 axios.defaults.baseURL = config[import.meta.env.MODE].baseUrl
 // axios.defaults.baseURL = config["development"].baseUrl
-// axios.defaults.baseURL = 'http://boer.ink:5002'
+// axios.defaults.baseURL = 'http://localhost:9000'
 // 携带 cookie，对目前的项目没有什么作用，因为我们是 token 鉴权
 axios.defaults.withCredentials = true
 // 请求头，headers 信息
 axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'
 axios.defaults.headers['Authorization'] = localStorage.getItem('token') || ''
+// axios.defaults.headers['Access-Control-Allow-Headers'] = '*'
+// axios.defaults.headers['Access-Control-Allow-Origin'] = '*'
 // 默认 post 请求，使用 application/json 形式
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 

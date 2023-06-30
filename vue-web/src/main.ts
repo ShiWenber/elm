@@ -6,6 +6,7 @@ import router from './router'
 import ElementPlus from 'element-plus'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import axios from 'axios'
+import './assets/css/tailwindcss.css'
 
 import 'element-plus/dist/index.css'
 

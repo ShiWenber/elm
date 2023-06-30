@@ -1,5 +1,5 @@
 {
-  "name": "environment-monitoring-web",
+  "name": "elm",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -12,15 +12,28 @@
     "test:unit": "vitest --environment jsdom --root src/",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pub": "npx tailwindcss -i ./src/assets/tailwindcss/input.css -o ./src/assets/css/output.css ",
+    "homePage": "npx tailwindcss -i ./src/assets/tailwindcss/homePage.css -o ./src/assets/css/homePage.css ",
+    "buListPage": "npx tailwindcss -i ./src/assets/tailwindcss/buListPage.css -o ./src/assets/css/buListPage.css ",
+    "buInfoPage": "npx tailwindcss -i ./src/assets/tailwindcss/buInfoPage.css -o ./src/assets/css/buInfoPage.css ",
+    "payPage": "npx tailwindcss -i ./src/assets/tailwindcss/payPage.css -o ./src/assets/css/payPage.css ",
+    "conOrderPage": "npx tailwindcss -i ./src/assets/tailwindcss/conOrderPage.css -o ./src/assets/css/conOrderPage.css ",
+    "loginPage": "npx tailwindcss -i ./src/assets/tailwindcss/loginPage.css -o ./src/assets/css/loginPage.css ",
+    "registerPage": "npx tailwindcss -i ./src/assets/tailwindcss/registerPage.css -o ./src/assets/css/registerPage.css ",
+    "orderPage": "npx tailwindcss -i ./src/assets/tailwindcss/orderPage.css -o ./src/assets/css/orderPage.css ",
+    "compileAll": "npm run pub && npm run homePage && npm run buListPage && npm run buInfoPage && npm run payPage && npm run conOrderPage && npm run loginPage && npm run registerPage && npm run hisOrderPage"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.10",
+    "@tailwindcss/forms": "^0.5.3",
     "axios": "^1.2.1",
     "element-plus": "^2.2.26",
     "js-md5": "^0.7.3",
     "pinia": "^2.0.28",
     "vue": "^3.2.45",
+    "vue-meta": "^2.4.0",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
@@ -42,7 +55,7 @@
     "postcss": "^8.4.21",
     "prettier": "^2.7.1",
     "sass": "^1.56.2",
-    "tailwindcss": "^3.2.4",
+    "tailwindcss": "^3.3.2",
     "typescript": "~4.7.4",
     "unplugin-auto-import": "^0.12.1",
     "unplugin-element-plus": "^0.4.1",

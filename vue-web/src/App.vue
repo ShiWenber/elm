@@ -6,7 +6,7 @@ import { reactive, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
 
 // 不需要菜单的路径数组
-const noMenu = ['/login']
+const noMenu = ['/login', '/register', '/404', '/conOrder', '/hisOrder', '/buinfo', '/custom', '/home', '/order', '/pay', '/', '/addUserAddress', '/userAddress', '/buInfo']
 const router = useRouter()
 const state = reactive({
   showMenu: true, // 是否需要显示菜单
@@ -103,7 +103,7 @@ router.beforeEach((to) => {
       </el-container>
     </el-container>
     <el-container v-else class="container">
-      <router-view />
+        <router-view />
     </el-container>
   </div>
 </template>
@@ -116,6 +116,8 @@ router.beforeEach((to) => {
 
 .container {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .aside {

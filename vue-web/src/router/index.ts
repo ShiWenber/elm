@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Index from '@/views/IndexView.vue'
+import Index from '@/views/home.vue'
 import AddRecord from '@/views/AddRecordView.vue'
 
 const router = createRouter({
@@ -41,11 +41,6 @@ const router = createRouter({
       component: () => import('../views/conOrder.vue')
     },
     {
-      path: '/hisOrder',
-      name: 'hisOrder',
-      component: () => import('../views/hisOrder.vue')
-    },
-    {
       path: '/index',
       name: 'home',
       component: () => import('../views/home.vue')
@@ -59,6 +54,31 @@ const router = createRouter({
       path: '/register',
       name: 'register',
       component: () => import('../views/register.vue')
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component: () => import('../views/home.vue')
+    },
+    {
+      path: '/order',
+      name: 'order',
+      component: () => import('../views/order.vue')
+    },
+    {
+      path: "/addUserAddress",
+      name: "addUserAddress",
+      component: () => import('../views/addUserAddress.vue')
+    },
+    {
+      path: "/userAddress",
+      name: "userAddress",
+      component: () => import('../views/userAddress.vue')
+    },
+    {
+      path: "/buInfo",
+      name: "buInfo",
+      component: () => import('../views/buInfo.vue')
     }
 
   ]

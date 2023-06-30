@@ -43,7 +43,7 @@ const submitForm = async () => {
 
             var config = {
                 method: 'post',
-                url: 'http://boer.ink:5002/pub/auth/auth-token',
+                url: 'http://localhost:9000/pub/auth/auth-token',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -60,15 +60,12 @@ const submitForm = async () => {
                         //记录id
                         localSet('id', response.data.id)
                         // 将response.data字符串中的Bearer 去掉
-                        localSet('token', response.data.replace("Bearer ", ""))
-
-
-
+                        localSet('token', response.data.accessToken.replace("Bearer ", ""))
                     }
 
                     var config = {
                         method: 'get',
-                        url: 'http://boer.ink:5002/pub/auth/queryByName?username=' + state.ruleForm.username,
+                        url: 'http://localhost:9000/pub/auth/queryByName?username=' + state.ruleForm.username,
                         headers: {
                             'Accept': '*/*'
                         }
@@ -87,7 +84,7 @@ const submitForm = async () => {
                             console.log(error);
                         });
                     // 此处登录完成之后，需要刷新页面
-                    window.location.href = '/'
+                    window.location.href = '/home'
 
 
                 })

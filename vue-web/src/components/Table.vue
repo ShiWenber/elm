@@ -42,7 +42,7 @@ const getList = () => {
 
   var config = {
     method: 'get',
-    url: 'http://boer.ink:5002/business/listFood/4028008285909e65018590c873eb0000?page=0&size=1&sort=',
+    url: 'http://localhost:9000/business/listFood/4028008285909e65018590c873eb0000?page=0&size=1&sort=',
     headers: {
       'Accept': '*/*',
       'Authorization': 'Bearer ' + state.userInfo.token,

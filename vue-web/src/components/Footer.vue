@@ -3,7 +3,7 @@
   <div class="footer">
     <div class="left">...</div>
     <div class="right">
-      <a target="_blank" href="">git</a>
+      <a target="_blank" href="">hello</a>
     </div>
   </div>
 </template>

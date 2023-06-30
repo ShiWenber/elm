@@ -1,116 +1,134 @@
+<script setup lang="ts">
+import Head from "../components/Head.vue";
+import BarPad from "../components/BarPad.vue";
+import "../assets/css/registerPage.css";
+import { reactive, ref } from "vue";
+import { ElForm, ElFormItem, ElInput, ElButton, ElRadioGroup, ElRadio } from "element-plus";
+import { ElMessage, ElMessageBox } from "element-plus";
+import axios from "axios";
+import { generateId } from "element-plus/es/utils";
+
+const formRef = ref(null)
+
+const form = ref({
+    tel: "",
+    password: "",
+    password2: "",
+    name: "",
+    gender: "男",
+    username: ""
+})
+const rules = reactive({
+    tel: [
+        { required: true, message: '请输入手机号码', trigger: 'blur' },
+        { pattern: /^1[3-9]\d{9}$/, message: '手机号码格式不正确', trigger: 'blur' }
+    ],
+    password: [
+        { required: true, message: '请输入密码', trigger: 'blur' },
+        { min: 6, max: 20, message: '密码长度为6-20个字符', trigger: 'blur' }
+    ],
+    password2: [
+        { required: true, message: '请再次输入密码', trigger: 'blur' },
+        { validator: validatePassword2, trigger: 'blur' }
+    ],
+    name: [
+        { required: true, message: '请输入用户姓名', trigger: 'blur' },
+        { max: 20, message: '用户姓名不能超过20个字符', trigger: 'blur' }
+    ],
+    gender: [
+        { required: true, message: '请选择用户性别', trigger: 'change' }
+    ]
+})
+
+function validatePassword2(rule, value, callback) {
+    if (value !== form.value.password) {
+        callback(new Error('两次输入的密码不一致'))
+    } else {
+        callback()
+    }
+}
+
+function register() {
+    formRef.value.validate(valid => {
+        if (valid) {
+            const gender = form.value.gender === '男' ? 1 : 0;
+            let data = JSON.stringify({
+                "password": '{noop}' + form.value.password,
+                "username": form.value.tel,
+                "type": 1,
+                "sex": gender,
+                "email": "string",
+                "tel": form.value.tel,
+            });
+
+            let config = {
+                method: 'post',
+                maxBodyLength: Infinity,
+                url: 'http://localhost:9000/pub/auth/registerCustomer',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: data
+            };
+
+            axios.request(config)
+                .then((response) => {
+                    console.log(JSON.stringify(response.data));
+                    ElMessage.success(response.data);
+                })
+                .catch((error) => {
+                    console.log(error);
+                    ElMessage.error("userphone already exists");
+                });
+            window.location.href = "/login";
+
+            // TODO: 提交注册数据
+        }
+    })
+}
+
+</script>
 <!-- 同一整个web应用前端风格的模板页,包括了主页面和底部按钮带 -->
 <template>
+    <Head></Head>
 
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-
-    <link href="../dist/output.css" type="text/css" rel="stylesheet">
-
-    <!-- 使用的特殊的css样式的位置 -->
-    <link href="../dist/registerPage.css" type="text/css" rel="stylesheet" />
-
-</head>
-
-<body>
+    <div>
 
 
-    <div class="mainPad">
-        <div class="headPad">
-            <div class="my-2 text-lg text-center">
-                用户注册
+        <div class="mainPad">
+            <div class="headPad">
+                <div class="my-2 text-lg text-center">
+                    用户注册
+                </div>
+            </div>
+            <div class="bodyPad">
+                <el-form :model="form" :rules="rules" ref="formRef" label-width="20%">
+                    <el-form-item label="手机号码" prop="tel">
+                        <el-input type="text" v-model.trim="form.tel" placeholder="请输入手机号码" autocomplete="off"></el-input>
+                    </el-form-item>
+                    <el-form-item label="密码" prop="password">
+                        <el-input type="password" v-model.trim="form.password" placeholder="请输入密码"></el-input>
+                    </el-form-item>
+                    <el-form-item label="确认密码" prop="password2">
+                        <el-input type="password" v-model.trim="form.password2" placeholder="请再次输入密码"></el-input>
+                    </el-form-item>
+                    <el-form-item label="用户姓名" prop="name">
+                        <el-input v-model.trim="form.name" placeholder="请输入用户姓名"></el-input>
+                    </el-form-item>
+                    <el-form-item label="用户性别" prop="gender">
+                        <el-radio-group v-model="form.gender">
+                            <el-radio label="男">男</el-radio>
+                            <el-radio label="女">女</el-radio>
+                        </el-radio-group>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-button type="primary" @click="register" style="color: black;">注册</el-button>
+                    </el-form-item>
+                </el-form>
             </div>
         </div>
-        <div class="bodyPad">
-            <div class="line">
-                <div class="w-20">
-                    手机号码：
-                </div>
-                <div>
-                    <input type="text" name="phone" id="phone" placeholder="请输入手机号码" />
-                </div>
-            </div>
-            <div class="line">
-                <div class="w-20">
-                    密码：
-                </div>
-                <div>
-                    <input type="password" name="password" id="password" placeholder="请输入密码" />
-                </div>
 
+        <BarPad></BarPad>
 
-            </div>
-            <div class="line">
-                <div class="w-20">
-                    确认密码：
-                </div>
-                <div>
-                    <input type="password" name="password2" id="password2" placeholder="请再次输入密码" />
-                </div>
-            </div>
-            <div class="line">
-                <div class="w-20">
-                    用户姓名：
-                </div>
-                <div>
-                    <input type="text" name="name" id="name" placeholder="请输入用户姓名" />
-                </div>
-
-            </div>
-            <div class="line">
-                <div class="w-20">
-                    用户性别：
-                </div>
-                <div class="flex flex-row space-x-2">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                            value="男">
-                        <label class="form-check-label" for="inlineRadio1">男</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                            value="女">
-                        <label class="form-check-label" for="inlineRadio2">女</label>
-                    </div>
-                </div>
-
-
-            </div>
-            <div class="py-10">
-                <button class="w-3/4 text-center justify-center bg-transparent rounded-full bg-green-400 shadow-sm" id="register">注册</button>
-            </div>
-
-        </div>
     </div>
-
-
-
-
-    <div class="barPad">
-        <div>
-            <i class="fas fa-home"></i>
-            <br />首页
-        </div>
-        <div>
-            <i class="fas fa-search"></i>
-            <br />发现
-        </div>
-        <div>
-            <i class="fas fa-shopping-cart"></i>
-            <br />订单
-        </div>
-        <div>
-            <i class="fas fa-user"></i>
-            <br />我的
-        </div>
-    </div>
-
-
-</body>
-
-</html>
 </template>

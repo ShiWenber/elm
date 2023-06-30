@@ -1,216 +1,130 @@
-<!-- 
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="/dist/output.css" rel="stylesheet">
-</head>
-<body>
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
-</body>
-</html> -->
+<script setup lang="ts">
+import Head from "../components/Head.vue";
+import BarPad from "../components/BarPad.vue";
+import "../assets/css/orderPage.css";
+import "../assets/css/output.css"
+import { ref } from "vue";
+</script>
 
-<!-- tailwind 中的 w-60 表示 width: 15rem; /* 240px */  -->
-<!-- 使用 cdn 方式应用 tailwindcss -->
 <template>
+    <!-- 同一整个web应用前端风格的模板页,包括了主页面和底部按钮带 -->
 
-<html>
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-  <link href="../dist/output.css" type="text/css" rel="stylesheet">
-  <link href="../dist/homePage.css" type="text/css" rel="stylesheet" />
-</head>
-
-<body class="homePage">
-  <div class="bodyPad">
-
-    <div class="mainPad">
-      <!-- 设置导航栏 -->
-      <div class="headPad">
-        <!-- pl-4左侧内边距 -->
-        <div class="pl-4">
-          <i class="fas fa-map-marker-alt"></i>
-          云南大学呈贡校区
-        </div>
-        <div class="m-4">
-          <input type="text" placeholder="搜索">
-        </div>
-
-      </div>
-
-      <!-- 商品分类 -->
-      <div class="cataMenu">
-        <div class="grid grid-cols-5 gap-3">
-          <div>
-            <a href="./buList.html"><img src="../../images/-12f424b44c0cdcb.jpg" alt="蔬菜">
-            </a>
-            蔬菜
-          </div>
-
-          <div>
-            <a href="./buList.html"><img src="../../images/-12f424b44c0cdcb.jpg" alt="蔬菜"></a>
-            蔬菜
-          </div>
-
-          <div>
-            <a href="./buList.html"><img src="../../images/-12f424b44c0cdcb.jpg" alt="蔬菜"></a>
-            蔬菜
-          </div>
-          <div>
-            <a href="./buList.html"><img src="../../images/-12f424b44c0cdcb.jpg" alt="蔬菜"></a>
-            蔬菜
-          </div>
-          <div>
-            <a href="./buList.html"><img src="../../images/-12f424b44c0cdcb.jpg" alt="蔬菜"></a>
-            蔬菜
-          </div>
-          <div>
-            <a href="./buList.html"><img src="../../images/-12f424b44c0cdcb.jpg" alt="蔬菜"></a>
-            蔬菜
-          </div>
-
-          <div>
-            <a href="./buList.html"><img src="../../images/-12f424b44c0cdcb.jpg" alt="蔬菜"></a>
-            蔬菜
-          </div>
-          <div>
-            <a href="./buList.html"><img src="../../images/-12f424b44c0cdcb.jpg" alt="蔬菜"></a>
-            蔬菜
-          </div>
-          <div>
-            <a href="./buList.html"><img src="../../images/-12f424b44c0cdcb.jpg" alt="蔬菜"></a>
-            蔬菜
-          </div>
-
-          <div>
-            <a href="./buList.html"><img src="../../images/-12f424b44c0cdcb.jpg" alt="蔬菜"></a>
-            蔬菜
-          </div>
-        </div>
-
-      </div>
-      <div class="buttonPad">
-        <a class="btn btn-full btn-green grow">
-          <i class="fas fa-sign-in-alt"></i>
-          登录
-        </a>
-        <a class="btn btn-full btn-blue grow">
-          <i class="fas fa-sign-out-alt"></i>
-          退出
-        </a>
-      </div>
-      <div class="adPad">
-        <a href="#">
-          <img
-            src="https://tse1-mm.cn.bing.net/th/id/R-C.e788419a7b58c22ddaf2f43903c6e739?rik=yr43i9GI1DDcHg&riu=http%3a%2f%2fepaper.file.routeryun.com%2flsrb%2f2020-04-03%2f5e86361508699.jpg&ehk=naYuJ611UhG0rT6pXbj%2bTTqt%2bZeawR%2fhrb46lyDlRvE%3d&risl=&pid=ImgRaw&r=0"
-            title="广告" />
-        </a>
-      </div>
-
-      <div class="businessPad">
-        <div class="titlePad">
-          <span></span> 商家列表<span></span>
-        </div>
-        <div class="searchBar mx-4">
-          <button>综合排序</button>
-          <button>距离最近</button>
-          <button>销量最高</button>
-          <button>筛选</button>
-        </div>
-      </div>
+    <Head></Head>
+    <div>
 
 
-
-      <!-- 商家列表 -->
-      <div class="businessList">
-        <div class="businessCard">
-          <div class="businessIcon">
-            <img src="../../images/-12f424b44c0cdcb.jpg" title="菜">
-          </div>
-          <div class="businessInfo">
-            <div>包菜狗肉</div>
-            <div>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              4.9月销售996
+        <div class="mainPad">
+            <div class="headPad">
+                <div class="my-2 text-lg text-center">
+                    我的订单
+                </div>
             </div>
-            <div>￥15起</div>
-          </div>
-        </div>
+            <div class="bodyPad">
+                <div class="py-3 text-gray-400">
+                    未支付订单信息
+                </div>
+                <div class="buCard">
+                    <div class="buInfo">
+                        <div>万家饺子（软件园E18店）</div>
+                        <div>
+                            <i class="fas fa-caret-down"></i>
+                        </div>
+                        <div>￥49</div>
+                        <div class="rounded-sm bg-orange-500 text-white">
+                            <RouterLink to="/pay">
+                                去支付
+                            </RouterLink>
+                        </div>
+                    </div>
+                    <div class="line">
+                        <div class="items">
+                            纯肉鲜肉（水饺）x2
+                        </div>
+                        <div class="price">
+                            ￥15
+                        </div>
+                    </div>
+                    <div class="line">
+                        <div class="items">
+                            玉米鲜肉（水饺）x1
+                        </div>
+                        <div class="price">
+                            ￥16
+                        </div>
+                    </div>
+                    <div class="line">
+                        <div class="items">
+                            配送费
+                        </div>
+                        <div class="price">
+                            ￥3
+                        </div>
+                    </div>
+                </div>
+                <div class="buCard">
+                    <div class="buInfo">
+                        <div>小锅饭豆腐馆（全运店）</div>
+                        <div>
+                            <i class="fas fa-caret-down"></i>
+                        </div>
+                        <div>￥55</div>
+                        <div class="rounded-sm bg-orange-500 text-white">去支付</div>
+                    </div>
+                    <div class="line">
+                        <div class="items">
+                            纯肉鲜肉（水饺）x2
+                        </div>
+                        <div class="price">
+                            ￥15
+                        </div>
+                    </div>
+                    <div class="line">
+                        <div class="items">
+                            玉米鲜肉（水饺）x1
+                        </div>
+                        <div class="price">
+                            ￥16
+                        </div>
+                    </div>
+                    <div class="line">
+                        <div class="items">
+                            配送费
+                        </div>
+                        <div class="price">
+                            ￥3
+                        </div>
+                    </div>
+                </div>
+                <div class="py-5 text-gray-400">
+                    已支付订单信息
+                </div>
+                <div class="buCard">
+                    <div class="buInfo">
+                        <div>万家饺子（软件园E18店）</div>
+                        <div>
+                            <i class="fas fa-caret-down"></i>
+                        </div>
+                        <div>
+                            ￥49
+                        </div>
+                    </div>
+                    <div class="buInfo">
+                        <div>小锅饭豆腐馆（全运店）</div>
+                        <div>
+                            <i class="fas fa-caret-down"></i>
+                        </div>
+                        <div>
+                            ￥55
+                        </div>
+                    </div>
 
-        <div class="businessCard">
-          <div class="businessIcon">
-            <img src="../../images/-12f424b44c0cdcb.jpg" title="菜">
-          </div>
-          <div class="businessInfo">
-            <div>包菜狗肉</div>
-            <div>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              4.9月销售996
+                </div>
             </div>
-            <div>￥15起</div>
-          </div>
         </div>
 
-        <div class="businessCard">
-          <div class="businessIcon">
-            <img src="../../images/-12f424b44c0cdcb.jpg" title="菜">
-          </div>
-          <div class="businessInfo">
-            <div>包菜狗肉</div>
-            <div>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              4.9月销售996
-            </div>
-            <div>￥15起</div>
-          </div>
-        </div>
-      </div>
+
+        <BarPad></BarPad>
+
 
     </div>
-
-
-  </div>
-  <div class="barPad">
-    <div>
-      <i class="fas fa-home"></i>
-      <br />首页
-    </div>
-    <div>
-      <i class="fas fa-search"></i>
-      <br />发现
-    </div>
-    <div>
-      <i class="fas fa-shopping-cart"></i>
-      <br />订单
-    </div>
-    <div>
-      <i class="fas fa-user"></i>
-      <br />我的
-    </div>
-  </div>
-</body>
-
-
-
-</body>
-
-</html>
 </template>

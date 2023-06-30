@@ -7,22 +7,25 @@
 }
 
 .mainPad {
-    height: 88vh;
+    height: 80vh;
     overflow: scroll;
     @apply relative;
 }
 
 .bodyPad {
-    @apply overflow-y-scroll w-full h-full px-4;
+    @apply  w-full h-full px-4 overflow-y-hidden flex;
 }
 
 
 /* 设置非透明背景 */
 .barPad {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     @apply flex flex-row h-20 justify-center content-center items-center
     border border-solid border-gray-300 shadow-lg
     bottom-0 sticky;
-
 }
 /* flex-row 让内部的 flex 项目水平排列 */
 
